@@ -6,6 +6,7 @@ var _           = require('lodash'),
     express     = require('express'),
     busboy      = require('./ghost-busboy'),
     config      = require('../config'),
+    crypto      = require('crypto'),
     path        = require('path'),
     api         = require('../api'),
     passport    = require('passport'),
@@ -159,6 +160,40 @@ var middleware = {
         }
     },
 
+    addCSPReportHeader: function (req, res, next) {
+        res.nonce = crypto.randomBytes(12).toString('hex');
+
+        var safeList = [
+            '*.googleusercontent.com',
+            '*.googleapis.com',
+            '*.github.com',
+            '*.twitter.com',
+            '*.facebook.com',
+            '*.youtube.com',
+            '*.bootstrapcdn.com',
+            '*.disqus.com',
+            '*.google-analytics.com',
+            '*.cloudflare.com'   // for cdnjs
+        ];
+
+        if (config().cspSafeList) {
+            safeList = _.union(safeList, config().cspSafeList);
+        }
+
+        if (res.isAdmin) {
+
+            res.set({
+                'Content-Security-Policy':
+                    'style-src \'self\' \'unsafe-inline\' ' + safeList.join(' ') + '; ' +
+                    'default-src \'self\' \'unsafe-eval\' \'nonce-' + res.nonce + '\' ' + safeList.join(' ') + '; ' +
+                    'img-src *; '
+            });
+        }
+
+        next();
+
+    },
+    
     // work around to handle missing client_secret
     // oauth2orize needs it, but untrusted clients don't have it
     addClientSecret: function (req, res, next) {
