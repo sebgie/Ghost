@@ -185,7 +185,7 @@ var middleware = {
             res.set({
                 'Content-Security-Policy':
                     'style-src \'self\' \'unsafe-inline\' ' + safeList.join(' ') + '; ' +
-                    'default-src \'self\' \'unsafe-eval\' \'nonce-' + res.nonce + '\' ' + safeList.join(' ') + '; ' +
+                    'default-src \'self\' \'unsafe-eval\' ' + safeList.join(' ') + '; ' +
                     'img-src *; '
             });
         }
