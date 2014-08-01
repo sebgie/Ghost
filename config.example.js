@@ -82,7 +82,7 @@ config = {
             host: '127.0.0.1',
             port: '2369'
         },
-        ratePeriod: 1,
+        ratePeriod: 2,
         spamTimeout: 5,
         logging: false
     },
@@ -105,7 +105,7 @@ config = {
             host: '127.0.0.1',
             port: '2369'
         },
-        ratePeriod: 1,
+        ratePeriod: 2,
         spamTimeout: 5,
         logging: false
     },
@@ -124,7 +124,7 @@ config = {
                 charset  : 'utf8'
             }
         },
-        ratePeriod: 1,
+        ratePeriod: 2,
         spamTimeout: 5,
         server: {
             host: '127.0.0.1',
