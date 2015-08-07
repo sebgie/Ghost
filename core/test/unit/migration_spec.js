@@ -20,7 +20,7 @@ describe('Migrations', function () {
     describe('DB version integrity', function () {
         // Only these variables should need updating
         var currentDbVersion = '004',
-            currentSchemaHash = 'a27a018a8aef272fd298b33552c2446b',
+            currentSchemaHash = 'f656eb6371131c197242d7e3d7c5e5be',
             currentPermissionsHash = '42e486732270cda623fc5efc04808c0c';
 
         // If this test is failing, then it is likely a change has been made that requires a DB version bump,
