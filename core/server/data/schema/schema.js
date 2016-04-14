@@ -193,5 +193,14 @@ module.exports = {
         user_id: {type: 'integer', nullable: false, unsigned: true, references: 'users.id'},
         client_id: {type: 'integer', nullable: false, unsigned: true, references: 'clients.id'},
         expires: {type: 'bigInteger', nullable: false}
+    },
+    subscribers: {
+        id: {type: 'increments', nullable: false, primary: true},
+        email: {type: 'string', maxlength: 254, nullable: false, unique: true, validations: {isEmail: true}},
+        created_at: {type: 'dateTime', nullable: false},
+        created_by: {type: 'integer', nullable: false},
+        updated_at: {type: 'dateTime', nullable: true},
+        updated_by: {type: 'integer', nullable: true},
+        deleted_at: {type: 'dateTime', nullable: true}
     }
 };

@@ -19,6 +19,7 @@ var _              = require('lodash'),
     themes         = require('./themes'),
     users          = require('./users'),
     slugs          = require('./slugs'),
+    subscribers    = require('./subscribers'),
     authentication = require('./authentication'),
     uploads        = require('./upload'),
     exporter       = require('../data/export'),
@@ -242,6 +243,7 @@ module.exports = {
     themes: themes,
     users: users,
     slugs: slugs,
+    subscribers: subscribers,
     authentication: authentication,
     uploads: uploads
 };

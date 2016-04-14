@@ -4,6 +4,7 @@ var frontend        = require('../controllers/frontend'),
     express         = require('express'),
     utils           = require('../utils'),
     privateBlogging = require('../apps/private-blogging'),
+    subscribe       = require('../apps/subscribe'),
 
     frontendRoutes;
 
@@ -36,6 +37,8 @@ frontendRoutes = function frontendRoutes() {
 
     // @TODO: this can be removed once the proper app route hooks have been set up.
     privateBlogging.setupRoutes(router);
+
+    subscribe.setupRoutes(router);
 
     return router;
 };
